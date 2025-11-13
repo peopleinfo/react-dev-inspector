@@ -25,9 +25,8 @@ export const createVisitor = ({ cwd = process.cwd(), excludes }: {
     ? memo((filePath: string): boolean => pathMatch(filePath, excludes))
     : () => false
 
-  const pathRelative = memo((filePath: string): string => relative(
-    cwd,
-    filePath,
+  const pathRelative = memo((filePath: string): string => (
+    relative(cwd, filePath).replace(/\\+/g, '/')
   ))
 
   const visitor: Visitor<PluginPass> = {

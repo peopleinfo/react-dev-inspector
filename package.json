@@ -6,15 +6,16 @@
   "license": "MIT",
   "author": "zthxxx <zthxxx.me@gmail.com>",
   "repository": "zthxxx/react-dev-inspector",
-  "packageManager": "pnpm@9",
+  "packageManager": "pnpm@10.0.0",
   "files": [],
   "scripts": {
     "prepare": "husky",
-    "test": "pnpm --recursive test",
+    "test": "turbo run test",
     "lint": "TIMING=1 eslint --format codeframe .",
     "purge": "pnpm -r clean && echo 'removing node_modules ...' && rm -rf .site {.,docs}/node_modules {examples,packages}/*/node_modules",
-    "build:packages": "pnpm --filter './packages/*' build",
-    "build:examples": "pnpm --filter './examples/*' build",
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter './packages/*'",
+    "build:examples": "turbo run build --filter './examples/*'",
     "build:site": "./scripts/build-site.sh"
   },
   "lint-staged": {
@@ -23,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "turbo": "latest",
     "@antfu/eslint-config": "4.1.1",
     "@antfu/eslint-config-react": "0.39.7",
     "@commitlint/cli": "18.4.3",

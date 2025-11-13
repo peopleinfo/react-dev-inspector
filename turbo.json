@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [
+    "turbo.json"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "inputs": [
+        "src/**",
+        "package.json",
+        "tsconfig.*",
+        "rollup.config.*",
+        "vite.config.*",
+        "postcss.config.*",
+        "tailwind.config.*",
+        "storybook*/**",
+        "babel.config.*",
+        ".umirc.*",
+        "next.config.*"
+      ]
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": [],
+      "cache": false,
+      "inputs": [
+        "src/**",
+        "tests/**",
+        "package.json",
+        "vitest.config.*",
+        "jest.config.*",
+        "tsconfig.*"
+      ]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": [],
+      "cache": false,
+      "inputs": [
+        "**/*.{js,cjs,mjs,ts,mts,tsx,json}",
+        "eslint.config.*",
+        ".eslintrc.*",
+        "package.json"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

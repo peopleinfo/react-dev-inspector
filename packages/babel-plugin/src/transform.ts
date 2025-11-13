@@ -54,7 +54,7 @@ export const transform = ({
    * filePath: /home/xxx/project/src/ooo/xxx.js
    * relativePath: src/ooo/xxx.js
    */
-  const relativePath = path.relative(rootPath, filePath)
+  const relativePath = path.relative(rootPath, filePath).replace(/\\+/g, '/')
 
   const isSkip = pathMatch(filePath, options?.excludes)
   if (isSkip) {

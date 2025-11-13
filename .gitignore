@@ -29,6 +29,8 @@ build
 
 /.site
 
+.turbo/
+
 # typescript
 *.tsbuildinfo
 
